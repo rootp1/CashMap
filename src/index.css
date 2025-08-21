@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -128,11 +129,15 @@
   }
 
   body {
-    @apply bg-[hsl(var(--page-background))] text-foreground font-sans scrollbar-hidden;
+    @apply bg-[hsl(var(--page-background))] text-foreground font-sans scrollbar-hidden antialiased;
     background-image: var(--gradient-app);
     background-attachment: fixed;
     font-variant-numeric: tabular-nums;
   }
+
+  h1, h2, h3, h4, h5, h6 { @apply font-semibold tracking-tight font-sans; }
+  p, span, li { @apply font-normal; }
+  code, pre { @apply font-mono text-sm; }
 
   /* Device frame styling */
   .device-frame {
