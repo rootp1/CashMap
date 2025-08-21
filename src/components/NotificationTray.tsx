@@ -50,7 +50,8 @@ export function NotificationTray({ open, onClose, categories, latestUncategorize
         </div>
         <div className="mt-4 px-3 pb-4 overflow-y-auto scrollbar-hidden">
           {latestUncategorized ? (
-            <div className="bg-white/95 rounded-xl p-4 text-foreground shadow-inner border border-white/30">
+            <div className="space-y-4">
+              <div className="bg-white/95 rounded-xl p-4 text-foreground shadow-inner border border-white/30">
               <div className="flex items-start justify-between mb-2">
                 <div className="flex-1">
                   <h3 className="font-semibold text-sm mb-1">
@@ -86,6 +87,15 @@ export function NotificationTray({ open, onClose, categories, latestUncategorize
                 <div className="flex justify-center pt-1">
                   <button onClick={onClose} className="text-[11px] text-muted-foreground hover:text-foreground px-3 py-1 rounded-md">Later</button>
                 </div>
+              </div>
+            </div>
+              {/* Dummy SMS notification below categorization card */}
+              <div className="bg-white/80 rounded-lg p-3 text-foreground shadow border border-white/40 backdrop-blur-sm">
+                <p className="text-[11px] font-semibold tracking-wide text-muted-foreground mb-1">RECENT SMS</p>
+                <p className="text-sm leading-snug">
+                  ₹12 debited for BMTC travel card reload via UPI. Ref: 9832456123. Bal: ₹1,842.
+                </p>
+                <p className="mt-1 text-[11px] text-muted-foreground">Just now · SMS</p>
               </div>
             </div>
           ) : (
