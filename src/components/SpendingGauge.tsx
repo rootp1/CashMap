@@ -139,8 +139,12 @@ export function SpendingGauge({ percentage, amount, limit, date, topCategory }: 
             <span className="absolute -inset-3 rounded-full bg-[radial-gradient(circle_at_center,hsl(var(--success)/0.35),transparent_70%)] blur opacity-60 animate-ping" />
             🤖
           </span>
-          <div className="pointer-events-none absolute left-1/2 top-full -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-popover/95 backdrop-blur-md text-popover-foreground text-xs rounded-md shadow-lg border px-3 py-2 max-w-[210px] text-center whitespace-normal break-words">
-            {feedback}
+          <div className="pointer-events-none absolute left-1/2 top-full -translate-x-1/2 mt-3 opacity-0 group-hover:opacity-100 transition duration-200">
+            <div className="relative bg-popover/95 backdrop-blur-md text-popover-foreground text-sm leading-relaxed rounded-lg shadow-lg border px-4 py-3 max-w-[260px] w-[230px] text-left whitespace-normal break-words">
+              {/* Arrow */}
+              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-popover/95 border-l border-t border-border rotate-45 rounded-[2px]" />
+              {feedback}
+            </div>
           </div>
         </div>
       </div>

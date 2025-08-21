@@ -157,9 +157,12 @@ export function DashboardCards({
           <div className="space-y-1">
             {topCategory ? (
               <>
-                <div className="flex items-center space-x-2">
-                  <span className="text-lg">{getIconForCategory(topCategory.category.iconKey)}</span>
-                  <p className="text-lg font-bold text-gradient-green">
+                <div className="flex items-center space-x-2 min-w-0">
+                  <span className="text-lg flex-shrink-0">{getIconForCategory(topCategory.category.iconKey)}</span>
+                  <p
+                    className="text-lg font-bold text-gradient-green truncate flex-1"
+                    title={topCategory.category.name}
+                  >
                     {topCategory.category.name}
                   </p>
                 </div>

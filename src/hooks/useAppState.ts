@@ -24,66 +24,66 @@ const nineDaysAgo = format(new Date(Date.now() - 9 * 86400000), 'yyyy-MM-dd');
 
 const seedTransactions: Transaction[] = [
   // Today
-  { id: '1', timestamp: `${today}T10:45:00`, date: today, merchant: 'Zomato', amount: -245, categoryId: '2', categorySource: 'notification' },
-  { id: '2', timestamp: `${today}T09:10:00`, date: today, merchant: 'BMTC', amount: -120, categoryId: null, categorySource: 'uncategorized' },
-  { id: '3', timestamp: `${today}T08:32:00`, date: today, merchant: 'Chai Point', amount: -65, categoryId: '2', categorySource: 'notification' },
-  { id: '4', timestamp: `${today}T00:15:00`, date: today, merchant: 'Amazon', amount: -1299, categoryId: '3', categorySource: 'notification' },
+  { id: '1', timestamp: `${today}T10:45:00`, date: today, merchant: 'Zomato', amount: -25, categoryId: '2', categorySource: 'notification' },
+  { id: '2', timestamp: `${today}T09:10:00`, date: today, merchant: 'BMTC', amount: -12, categoryId: null, categorySource: 'uncategorized' },
+  { id: '3', timestamp: `${today}T08:32:00`, date: today, merchant: 'Chai Point', amount: -7, categoryId: '2', categorySource: 'notification' },
+  { id: '4', timestamp: `${today}T00:15:00`, date: today, merchant: 'Amazon', amount: -130, categoryId: '3', categorySource: 'notification' },
   
   // Yesterday
-  { id: '5', timestamp: `${yesterday}T21:40:00`, date: yesterday, merchant: 'Rapido', amount: -350, categoryId: '1', categorySource: 'notification' },
-  { id: '6', timestamp: `${yesterday}T19:20:00`, date: yesterday, merchant: 'Myntra', amount: -799, categoryId: '3', categorySource: 'notification' },
-  { id: '7', timestamp: `${yesterday}T12:05:00`, date: yesterday, merchant: 'Subway', amount: -220, categoryId: '2', categorySource: 'notification' },
-  { id: '8', timestamp: `${yesterday}T07:55:00`, date: yesterday, merchant: 'Namma Metro', amount: -40, categoryId: '1', categorySource: 'notification' },
+  { id: '5', timestamp: `${yesterday}T21:40:00`, date: yesterday, merchant: 'Rapido', amount: -35, categoryId: '1', categorySource: 'notification' },
+  { id: '6', timestamp: `${yesterday}T19:20:00`, date: yesterday, merchant: 'Myntra', amount: -80, categoryId: '3', categorySource: 'notification' },
+  { id: '7', timestamp: `${yesterday}T12:05:00`, date: yesterday, merchant: 'Subway', amount: -22, categoryId: '2', categorySource: 'notification' },
+  { id: '8', timestamp: `${yesterday}T07:55:00`, date: yesterday, merchant: 'Namma Metro', amount: -4, categoryId: '1', categorySource: 'notification' },
   
   // Two days ago
-  { id: '9', timestamp: `${twoDaysAgo}T23:10:00`, date: twoDaysAgo, merchant: 'BigBazaar', amount: -1150, categoryId: '4', categorySource: 'notification' },
-  { id: '10', timestamp: `${twoDaysAgo}T18:30:00`, date: twoDaysAgo, merchant: 'Juice Junction', amount: -90, categoryId: '2', categorySource: 'notification' },
-  { id: '11', timestamp: `${twoDaysAgo}T10:02:00`, date: twoDaysAgo, merchant: 'BMTC', amount: -60, categoryId: '1', categorySource: 'notification' },
-  { id: '12', timestamp: `${twoDaysAgo}T08:18:00`, date: twoDaysAgo, merchant: 'Paytm Movies', amount: -199, categoryId: '5', categorySource: 'notification' },
+  { id: '9', timestamp: `${twoDaysAgo}T23:10:00`, date: twoDaysAgo, merchant: 'BigBazaar', amount: -115, categoryId: '4', categorySource: 'notification' },
+  { id: '10', timestamp: `${twoDaysAgo}T18:30:00`, date: twoDaysAgo, merchant: 'Juice Junction', amount: -9, categoryId: '2', categorySource: 'notification' },
+  { id: '11', timestamp: `${twoDaysAgo}T10:02:00`, date: twoDaysAgo, merchant: 'BMTC', amount: -6, categoryId: '1', categorySource: 'notification' },
+  { id: '12', timestamp: `${twoDaysAgo}T08:18:00`, date: twoDaysAgo, merchant: 'Paytm Movies', amount: -20, categoryId: '5', categorySource: 'notification' },
   
   // Three days ago with refund
-  { id: '13', timestamp: `${threeDaysAgo}T22:48:00`, date: threeDaysAgo, merchant: 'Decathlon', amount: -599, categoryId: '3', categorySource: 'notification' },
-  { id: '14', timestamp: `${threeDaysAgo}T17:22:00`, date: threeDaysAgo, merchant: 'CCD', amount: -145, categoryId: '2', categorySource: 'notification' },
-  { id: '15', timestamp: `${threeDaysAgo}T11:37:00`, date: threeDaysAgo, merchant: 'Reliance Fresh', amount: -380, categoryId: '4', categorySource: 'notification' },
-  { id: '16', timestamp: `${threeDaysAgo}T10:15:00`, date: threeDaysAgo, merchant: 'Zomato', amount: 245, categoryId: '2', categorySource: 'notification' },
-  { id: '17', timestamp: `${threeDaysAgo}T09:01:00`, date: threeDaysAgo, merchant: 'Auto Rickshaw', amount: -75, categoryId: null, categorySource: 'uncategorized' },
+  { id: '13', timestamp: `${threeDaysAgo}T22:48:00`, date: threeDaysAgo, merchant: 'Decathlon', amount: -60, categoryId: '3', categorySource: 'notification' },
+  { id: '14', timestamp: `${threeDaysAgo}T17:22:00`, date: threeDaysAgo, merchant: 'CCD', amount: -15, categoryId: '2', categorySource: 'notification' },
+  { id: '15', timestamp: `${threeDaysAgo}T11:37:00`, date: threeDaysAgo, merchant: 'Reliance Fresh', amount: -38, categoryId: '4', categorySource: 'notification' },
+  { id: '16', timestamp: `${threeDaysAgo}T10:15:00`, date: threeDaysAgo, merchant: 'Zomato', amount: 25, categoryId: '2', categorySource: 'notification' },
+  { id: '17', timestamp: `${threeDaysAgo}T09:01:00`, date: threeDaysAgo, merchant: 'Auto Rickshaw', amount: -8, categoryId: null, categorySource: 'uncategorized' },
   
   // Continue with remaining days...
-  { id: '18', timestamp: `${fourDaysAgo}T20:05:00`, date: fourDaysAgo, merchant: 'Nykaa', amount: -999, categoryId: '3', categorySource: 'notification' },
-  { id: '19', timestamp: `${fourDaysAgo}T16:45:00`, date: fourDaysAgo, merchant: 'Tea Stall', amount: -55, categoryId: '2', categorySource: 'notification' },
-  { id: '20', timestamp: `${fourDaysAgo}T13:10:00`, date: fourDaysAgo, merchant: 'D-Mart', amount: -270, categoryId: '4', categorySource: 'notification' },
-  { id: '21', timestamp: `${fourDaysAgo}T08:25:00`, date: fourDaysAgo, merchant: 'Metro SmartCard', amount: -30, categoryId: '1', categorySource: 'notification' },
+  { id: '18', timestamp: `${fourDaysAgo}T20:05:00`, date: fourDaysAgo, merchant: 'Nykaa', amount: -100, categoryId: '3', categorySource: 'notification' },
+  { id: '19', timestamp: `${fourDaysAgo}T16:45:00`, date: fourDaysAgo, merchant: 'Tea Stall', amount: -6, categoryId: '2', categorySource: 'notification' },
+  { id: '20', timestamp: `${fourDaysAgo}T13:10:00`, date: fourDaysAgo, merchant: 'D-Mart', amount: -27, categoryId: '4', categorySource: 'notification' },
+  { id: '21', timestamp: `${fourDaysAgo}T08:25:00`, date: fourDaysAgo, merchant: 'Metro SmartCard', amount: -3, categoryId: '1', categorySource: 'notification' },
   
-  { id: '22', timestamp: `${fiveDaysAgo}T21:15:00`, date: fiveDaysAgo, merchant: 'BigBasket', amount: -450, categoryId: '4', categorySource: 'notification' },
-  { id: '23', timestamp: `${fiveDaysAgo}T19:05:00`, date: fiveDaysAgo, merchant: 'KFC', amount: -180, categoryId: '2', categorySource: 'notification' },
-  { id: '24', timestamp: `${fiveDaysAgo}T15:20:00`, date: fiveDaysAgo, merchant: 'Ajio', amount: -520, categoryId: '3', categorySource: 'notification' },
-  { id: '25', timestamp: `${fiveDaysAgo}T11:05:00`, date: fiveDaysAgo, merchant: 'Paytm', amount: 150, categoryId: '5', categorySource: 'notification' },
-  { id: '26', timestamp: `${fiveDaysAgo}T09:40:00`, date: fiveDaysAgo, merchant: 'BMTC', amount: -85, categoryId: '1', categorySource: 'notification' },
+  { id: '22', timestamp: `${fiveDaysAgo}T21:15:00`, date: fiveDaysAgo, merchant: 'BigBasket', amount: -45, categoryId: '4', categorySource: 'notification' },
+  { id: '23', timestamp: `${fiveDaysAgo}T19:05:00`, date: fiveDaysAgo, merchant: 'KFC', amount: -18, categoryId: '2', categorySource: 'notification' },
+  { id: '24', timestamp: `${fiveDaysAgo}T15:20:00`, date: fiveDaysAgo, merchant: 'Ajio', amount: -52, categoryId: '3', categorySource: 'notification' },
+  { id: '25', timestamp: `${fiveDaysAgo}T11:05:00`, date: fiveDaysAgo, merchant: 'Paytm', amount: 15, categoryId: '5', categorySource: 'notification' },
+  { id: '26', timestamp: `${fiveDaysAgo}T09:40:00`, date: fiveDaysAgo, merchant: 'BMTC', amount: -9, categoryId: '1', categorySource: 'notification' },
   
-  { id: '27', timestamp: `${sixDaysAgo}T22:30:00`, date: sixDaysAgo, merchant: 'Flipkart', amount: -1499, categoryId: '3', categorySource: 'notification' },
-  { id: '28', timestamp: `${sixDaysAgo}T18:55:00`, date: sixDaysAgo, merchant: 'Pizza Hut', amount: -210, categoryId: '2', categorySource: 'notification' },
-  { id: '29', timestamp: `${sixDaysAgo}T13:00:00`, date: sixDaysAgo, merchant: 'HOPCOMS', amount: -110, categoryId: '4', categorySource: 'notification' },
-  { id: '30', timestamp: `${sixDaysAgo}T07:10:00`, date: sixDaysAgo, merchant: 'Namma Metro', amount: -50, categoryId: '1', categorySource: 'notification' },
+  { id: '27', timestamp: `${sixDaysAgo}T22:30:00`, date: sixDaysAgo, merchant: 'Flipkart', amount: -150, categoryId: '3', categorySource: 'notification' },
+  { id: '28', timestamp: `${sixDaysAgo}T18:55:00`, date: sixDaysAgo, merchant: 'Pizza Hut', amount: -21, categoryId: '2', categorySource: 'notification' },
+  { id: '29', timestamp: `${sixDaysAgo}T13:00:00`, date: sixDaysAgo, merchant: 'HOPCOMS', amount: -11, categoryId: '4', categorySource: 'notification' },
+  { id: '30', timestamp: `${sixDaysAgo}T07:10:00`, date: sixDaysAgo, merchant: 'Namma Metro', amount: -5, categoryId: '1', categorySource: 'notification' },
   
   // Seven days ago (Green - Low spending day)
-  { id: '31', timestamp: `${sevenDaysAgo}T19:30:00`, date: sevenDaysAgo, merchant: 'Local Tea Shop', amount: -20, categoryId: '2', categorySource: 'notification' },
-  { id: '32', timestamp: `${sevenDaysAgo}T14:15:00`, date: sevenDaysAgo, merchant: 'Bus Ticket', amount: -35, categoryId: '1', categorySource: 'notification' },
-  { id: '33', timestamp: `${sevenDaysAgo}T10:45:00`, date: sevenDaysAgo, merchant: 'Grocery Store', amount: -180, categoryId: '4', categorySource: 'notification' },
+  { id: '31', timestamp: `${sevenDaysAgo}T19:30:00`, date: sevenDaysAgo, merchant: 'Local Tea Shop', amount: -2, categoryId: '2', categorySource: 'notification' },
+  { id: '32', timestamp: `${sevenDaysAgo}T14:15:00`, date: sevenDaysAgo, merchant: 'Bus Ticket', amount: -4, categoryId: '1', categorySource: 'notification' },
+  { id: '33', timestamp: `${sevenDaysAgo}T10:45:00`, date: sevenDaysAgo, merchant: 'Grocery Store', amount: -18, categoryId: '4', categorySource: 'notification' },
   
   // Eight days ago (Green - Low spending day)
-  { id: '34', timestamp: `${eightDaysAgo}T20:00:00`, date: eightDaysAgo, merchant: 'Snack Corner', amount: -45, categoryId: '2', categorySource: 'notification' },
-  { id: '35', timestamp: `${eightDaysAgo}T16:30:00`, date: eightDaysAgo, merchant: 'Auto Rickshaw', amount: -80, categoryId: '1', categorySource: 'notification' },
-  { id: '36', timestamp: `${eightDaysAgo}T11:20:00`, date: eightDaysAgo, merchant: 'Vegetable Market', amount: -120, categoryId: '4', categorySource: 'notification' },
+  { id: '34', timestamp: `${eightDaysAgo}T20:00:00`, date: eightDaysAgo, merchant: 'Snack Corner', amount: -5, categoryId: '2', categorySource: 'notification' },
+  { id: '35', timestamp: `${eightDaysAgo}T16:30:00`, date: eightDaysAgo, merchant: 'Auto Rickshaw', amount: -8, categoryId: '1', categorySource: 'notification' },
+  { id: '36', timestamp: `${eightDaysAgo}T11:20:00`, date: eightDaysAgo, merchant: 'Vegetable Market', amount: -12, categoryId: '4', categorySource: 'notification' },
   
   // Nine days ago (Green - Very low spending day)
-  { id: '37', timestamp: `${nineDaysAgo}T18:45:00`, date: nineDaysAgo, merchant: 'Juice Shop', amount: -30, categoryId: '2', categorySource: 'notification' },
-  { id: '38', timestamp: `${nineDaysAgo}T12:10:00`, date: nineDaysAgo, merchant: 'Metro Card', amount: -100, categoryId: '1', categorySource: 'notification' },
+  { id: '37', timestamp: `${nineDaysAgo}T18:45:00`, date: nineDaysAgo, merchant: 'Juice Shop', amount: -3, categoryId: '2', categorySource: 'notification' },
+  { id: '38', timestamp: `${nineDaysAgo}T12:10:00`, date: nineDaysAgo, merchant: 'Metro Card', amount: -10, categoryId: '1', categorySource: 'notification' },
 ];
 
 const initialState: AppState = {
   selectedDate: today,
   settings: {
-    dailyLimit: 1000,
+  dailyLimit: 100,
     warningThreshold: 80,
     exceededThreshold: 100,
     notifyWarning: true,
