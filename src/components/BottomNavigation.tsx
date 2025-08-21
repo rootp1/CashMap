@@ -1,4 +1,4 @@
-import { BarChart3, Clock, Users, Settings } from 'lucide-react';
+import { BarChart3, Clock, Users, Settings, Bell } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const tabs = [
@@ -8,13 +8,17 @@ const tabs = [
   { id: 'settings', label: 'Settings', icon: Settings, path: '/settings' },
 ];
 
-export function BottomNavigation() {
+interface BottomNavigationProps {
+  onBellClick?: () => void;
+}
+
+export function BottomNavigation({ onBellClick }: BottomNavigationProps) {
   const location = useLocation();
   const navigate = useNavigate();
 
   return (
     <nav className="bg-background/95 backdrop-blur border-t border-border pt-1 pb-6 relative">
-      <div className="flex">
+  <div className="flex">
         {tabs.map(({ id, label, icon: Icon, path }) => {
           const isActive = location.pathname === path;
           
