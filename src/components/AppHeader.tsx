@@ -1,6 +1,7 @@
-import { Bell, User } from 'lucide-react';
+import { Bell, BatteryFull, Wifi, SignalHigh } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+// Removed avatar; using app icon + bell per request
 
 interface AppHeaderProps {
   title: string;
@@ -9,29 +10,45 @@ interface AppHeaderProps {
 }
 
 export function AppHeader({ title, showNotifications = true, onNotificationClick }: AppHeaderProps) {
+  const [time, setTime] = useState(() => new Date());
+  useEffect(() => {
+    const id = setInterval(() => setTime(new Date()), 30_000); // update every 30s
+    return () => clearInterval(id);
+  }, []);
+  const timeStr = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+
   return (
-    <header className="relative flex items-center justify-between px-4 py-3 border-b border-border bg-gradient-to-r from-primary/15 via-success/15 to-warning/15 backdrop-blur-md">
-      <div className="w-10 flex">
-        {showNotifications && (
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="touch-target glow-green"
-            onClick={onNotificationClick}
-          >
-            <Bell className="h-5 w-5" />
-          </Button>
-        )}
+    <header className="relative px-4 pt-2 pb-3 bg-gradient-to-r from-primary/15 via-success/15 to-warning/15 backdrop-blur-md">
+      {/* Status Bar */}
+      <div className="flex items-center justify-between text-[11px] font-medium text-foreground/80 leading-none mb-1 select-none">
+        <span>{timeStr}</span>
+        <div className="flex items-center gap-1.5">
+          <SignalHigh className="h-3.5 w-3.5" />
+          <Wifi className="h-3.5 w-3.5" />
+          <BatteryFull className="h-3.5 w-3.5" />
+        </div>
       </div>
-      <h1 className="text-lg font-semibold text-gradient-green tracking-wide drop-shadow-sm">{title}</h1>
-      <div className="relative">
-        <Avatar className="h-9 w-9 ring-2 ring-primary/50 hover:ring-success/60 transition">
-          <AvatarFallback className="bg-gradient-to-br from-primary to-success text-primary-foreground text-sm flex items-center justify-center">
-            <User className="h-4 w-4" />
-          </AvatarFallback>
-        </Avatar>
-        <div className="absolute -inset-1 rounded-full blur-md opacity-35 bg-gradient-to-r from-primary via-success to-warning pointer-events-none" />
+      {/* Main Header Row */}
+      <div className="flex items-center justify-between">
+        <div className="w-10 flex items-center justify-start">
+          <img src="/favicon.png" alt="App" className="h-8 w-8 rounded-md shadow-sm object-contain" />
+        </div>
+        <h1 className="text-lg font-semibold text-gradient-green tracking-wide drop-shadow-sm flex-1 text-center">{title}</h1>
+        <div className="w-10 flex items-center justify-end">
+          {showNotifications && (
+            <Button
+              variant="ghost"
+              size="icon"
+              className="touch-target glow-green"
+              onClick={onNotificationClick}
+            >
+              <Bell className="h-5 w-5" />
+            </Button>
+          )}
+        </div>
       </div>
+      {/* Bottom Divider Line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-border" />
     </header>
   );
 }

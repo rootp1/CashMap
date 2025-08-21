@@ -13,7 +13,7 @@ export function BottomNavigation() {
   const navigate = useNavigate();
 
   return (
-    <nav className="bg-background border-t border-border">
+    <nav className="bg-background/95 backdrop-blur border-t border-border pt-1 pb-6 relative">
       <div className="flex">
         {tabs.map(({ id, label, icon: Icon, path }) => {
           const isActive = location.pathname === path;
