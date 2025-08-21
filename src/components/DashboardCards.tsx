@@ -8,6 +8,7 @@ interface DashboardCardsProps {
   selectedDate: string;
   sevenDayTrend: number[];
   topCategory: { category: { name: string; iconKey: string }; amount: number } | null;
+  percentageSpent?: number; // for syncing colors with gauge
 }
 
 export function DashboardCards({
@@ -16,8 +17,22 @@ export function DashboardCards({
   dailyLimit,
   selectedDate,
   sevenDayTrend,
-  topCategory
+  topCategory,
+  percentageSpent
 }: DashboardCardsProps) {
+  // Derive status like gauge for consistent coloring
+  const status = (() => {
+    if (percentageSpent === undefined) return 'success';
+    if (percentageSpent >= 70) return 'danger';
+    if (percentageSpent > 50) return 'warning';
+    return 'success';
+  })();
+  const statusTextClass = status === 'danger' ? 'text-danger' : status === 'warning' ? 'text-warning' : 'text-success';
+  const gradientValueClass = status === 'danger'
+    ? 'bg-gradient-to-r from-danger via-danger to-danger bg-clip-text text-transparent'
+    : status === 'warning'
+      ? 'bg-gradient-to-r from-warning via-warning to-warning bg-clip-text text-transparent'
+      : 'text-gradient-green';
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
@@ -96,7 +111,7 @@ export function DashboardCards({
             <TrendingDown className="h-4 w-4 text-danger" />
           </div>
           <div className="space-y-1">
-            <p className="text-2xl font-bold currency text-gradient-green">
+            <p className={`text-2xl font-bold currency ${gradientValueClass}`}>
               {formatCurrency(daySpend)}
             </p>
             <p className="text-[11px] text-muted-foreground/70">
@@ -115,7 +130,7 @@ export function DashboardCards({
             <TrendingUp className="h-4 w-4 text-success" />
           </div>
           <div className="space-y-1">
-            <p className="text-2xl font-bold currency text-gradient-green">
+            <p className={`text-2xl font-bold currency ${gradientValueClass}`}>
               {formatCurrency(remaining)}
             </p>
             <p className="text-[11px] text-muted-foreground/70">
@@ -136,7 +151,7 @@ export function DashboardCards({
             </div>
           </div>
           <div className="space-y-1">
-            <p className="text-lg font-bold text-gradient-green">
+            <p className={`text-lg font-bold ${gradientValueClass}`}>
               {sevenDayTrend[sevenDayTrend.length - 1]}%
             </p>
             <p className="text-[11px] text-muted-foreground/70">
@@ -152,20 +167,18 @@ export function DashboardCards({
         <CardContent className="p-4">
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground/80">Top Category</h3>
-            <ArrowUpRight className="h-4 w-4 text-primary" />
+            {topCategory && (
+              <span className="text-base font-semibold ml-2 inline-flex items-center gap-1 pr-1">
+                <span>{getIconForCategory(topCategory.category.iconKey)}</span>
+              </span>
+            )}
           </div>
           <div className="space-y-1">
             {topCategory ? (
               <>
-                <div className="flex items-center space-x-2 min-w-0">
-                  <span className="text-lg flex-shrink-0">{getIconForCategory(topCategory.category.iconKey)}</span>
-                  <p
-                    className="text-lg font-bold text-gradient-green truncate flex-1"
-                    title={topCategory.category.name}
-                  >
-                    {topCategory.category.name}
-                  </p>
-                </div>
+                <p className={`text-lg font-bold leading-tight ${gradientValueClass}`}>
+                  {topCategory.category.name}
+                </p>
                 <p className="text-[11px] text-muted-foreground/70 currency">
                   {formatCurrency(topCategory.amount)}
                 </p>

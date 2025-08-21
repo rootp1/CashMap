@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Bell, DollarSign, Palette, Info, Plus, Minus, GripVertical } from 'lucide-react';
-import { AppHeader } from '@/components/AppHeader';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -106,9 +105,7 @@ export function Settings() {
 
   return (
     <div className="flex flex-col h-full">
-      <AppHeader title="Settings" />
-      
-  <div className="flex-1 overflow-y-auto p-4 space-y-6 scrollbar-hidden">
+      <div className="flex-1 overflow-y-auto p-4 space-y-6 scrollbar-hidden">
         {/* Limits & Alerts */}
         <Card>
           <CardHeader>

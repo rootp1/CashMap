@@ -1,21 +1,19 @@
-import { Calendar as CalendarIcon, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar as CalendarIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { AppHeader } from '@/components/AppHeader';
 import { SpendingGauge } from '@/components/SpendingGauge';
 import { AssistantBubble } from '@/components/AssistantBubble';
 import { DashboardCards } from '@/components/DashboardCards';
 import { useAppState } from '@/hooks/useAppState';
-import { Transaction } from '@/types';
 import { format } from 'date-fns';
 import { useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
+import { Slider } from '@/components/ui/slider';
 
 export function Dashboard() {
   const {
     state,
     updateState,
-    addTransaction,
     daySpend,
     remaining,
     percentageSpent,
@@ -23,33 +21,6 @@ export function Dashboard() {
     getSevenDayTrend,
     getTopCategory,
   } = useAppState();
-
-  const handleSimulateSMS = () => {
-    const merchants = ['Starbucks', 'Uber', 'Amazon', 'Swiggy', 'BookMyShow', 'Myntra'];
-    const amounts = [150, 250, 380, 120, 500, 200];
-    
-    const randomMerchant = merchants[Math.floor(Math.random() * merchants.length)];
-    const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
-    
-    const newTransaction: Omit<Transaction, 'id'> = {
-      timestamp: new Date().toISOString(),
-      date: state.selectedDate,
-      merchant: randomMerchant,
-      amount: -randomAmount,
-      categoryId: null,
-      categorySource: 'uncategorized',
-      rawMessage: `₹${randomAmount} spent at ${randomMerchant} via UPI`,
-    };
-
-    const transaction = addTransaction(newTransaction);
-    
-    updateState({
-      showCategorization: {
-        show: true,
-        transaction,
-      },
-    });
-  };
 
   const handleDateSelect = (date: string) => {
     updateState({ selectedDate: date });
@@ -78,9 +49,7 @@ export function Dashboard() {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <AppHeader title="Dashboard" />
-      
+  <div className="flex flex-col h-full">
   <div className="flex-1 overflow-y-auto scrollbar-hidden">
         {/* Date Picker Row */}
         <div className="flex justify-end px-4 py-3 gap-2 items-center">
@@ -149,25 +118,36 @@ export function Dashboard() {
         />
 
         {/* Dashboard Cards */}
-        <DashboardCards
-          daySpend={daySpend}
-          remaining={remaining}
-          dailyLimit={state.settings.dailyLimit}
-          selectedDate={state.selectedDate}
-          sevenDayTrend={getSevenDayTrend()}
-          topCategory={getTopCategory()}
-        />
+        <div className="flex items-stretch gap-3 px-2">
+          <div className="flex-1">
+            <DashboardCards
+              daySpend={daySpend}
+              remaining={remaining}
+              dailyLimit={state.settings.dailyLimit}
+              selectedDate={state.selectedDate}
+              sevenDayTrend={getSevenDayTrend()}
+              topCategory={getTopCategory()}
+              percentageSpent={percentageSpent}
+            />
+          </div>
+          <div className="flex flex-col items-center pr-2 pt-2 w-12">
+            <div className="text-[10px] font-medium mb-2 text-center uppercase tracking-wide">Limit</div>
+            <div className="h-full flex items-center">
+              <Slider
+                orientation="vertical"
+                value={[state.settings.dailyLimit]}
+                min={20}
+                max={300}
+                step={5}
+                className="h-56 w-6 data-[orientation=vertical]:flex-col"
+                onValueChange={(val) => updateState({ settings: { ...state.settings, dailyLimit: val[0] } })}
+              />
+            </div>
+            <div className="mt-2 text-xs font-semibold text-center">₹{state.settings.dailyLimit}</div>
+          </div>
+        </div>
       </div>
 
-      {/* Floating Action Button */}
-      <div className="absolute bottom-20 right-4">
-        <Button
-          onClick={handleSimulateSMS}
-          className="rounded-full w-14 h-14 shadow-lg bg-primary hover:bg-primary/90 text-primary-foreground"
-        >
-          <Plus className="h-6 w-6" />
-        </Button>
-      </div>
     </div>
   );
 }

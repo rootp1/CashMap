@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Clock } from 'lucide-react';
-import { AppHeader } from '@/components/AppHeader';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useAppState } from '@/hooks/useAppState';
@@ -85,9 +84,7 @@ export function PaymentsHistory() {
 
   return (
     <div className="flex flex-col h-full">
-      <AppHeader title="Payments History" />
-      
-  <div className="flex-1 overflow-y-auto scrollbar-hidden">
+      <div className="flex-1 overflow-y-auto scrollbar-hidden">
         {/* Filter Chips */}
         <div className="px-4 py-3 border-b border-border">
           <div className="flex flex-wrap gap-2">

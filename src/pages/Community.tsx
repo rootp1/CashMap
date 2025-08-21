@@ -1,5 +1,4 @@
 import { Users, TrendingUp, TrendingDown } from 'lucide-react';
-import { AppHeader } from '@/components/AppHeader';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -36,9 +35,7 @@ export function Community() {
 
   return (
     <div className="flex flex-col h-full">
-      <AppHeader title="Community" />
-      
-  <div className="flex-1 overflow-y-auto p-4 space-y-6 scrollbar-hidden">
+      <div className="flex-1 overflow-y-auto p-4 space-y-6 scrollbar-hidden">
         {/* Intro Card */}
         <Card className="bg-primary-muted border-primary">
           <CardContent className="p-4">
